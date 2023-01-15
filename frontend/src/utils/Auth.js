@@ -1,6 +1,6 @@
 import React from "react";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://api.moe-mesto.nomoredomains.club";
 
 export const register = async (email, password) => {
   const res = await fetch(`${BASE_URL}/signup`, {

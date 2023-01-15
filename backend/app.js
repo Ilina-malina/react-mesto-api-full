@@ -28,10 +28,8 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
-// const allowedCors = ['http://moe-mesto.nomoredomains.club', 'https://moe-mesto.nomoredomains.club', 'localhost:3000', 'http://localhost:3000'];
-// app.use(cors(allowedCors));
-
-app.use(cors());
+const allowedCors = ['http://moe-mesto.nomoredomains.club', 'https://moe-mesto.nomoredomains.club', 'localhost:3000', 'http://localhost:3000'];
+app.use(cors(allowedCors));
 
 app.use(requestLogger);
 app.use(limiter);
