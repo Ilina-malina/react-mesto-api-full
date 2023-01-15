@@ -1,0 +1,22 @@
+.header__link {
+    color: white;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.header__link:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 748px) {
+    .header__link {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

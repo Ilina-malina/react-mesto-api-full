@@ -1,0 +1,19 @@
+.header__user {
+    font-family: 'Inter', Arial, sans-serif;
+    color: white;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    margin-right: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+@media screen and (min-width: 748px) {
+    .header__user {
+        margin-right: 24px;
+        max-width: 300px;
+    }
+}

@@ -1,0 +1,14 @@
+.profile__image {
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    position: relative;
+    cursor: pointer;
+}
+
+.profile__image:hover .profile__overlay {
+    opacity: 1;
+}
+

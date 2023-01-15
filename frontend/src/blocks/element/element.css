@@ -1,0 +1,7 @@
+.element {
+    width: 282px;
+    border-radius: 10px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}

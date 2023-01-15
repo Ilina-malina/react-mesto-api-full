@@ -1,0 +1,22 @@
+.profile__subscribe {
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media screen and (min-width:768px) { 
+    .profile__subscribe {
+        font-size: 18px;
+        line-height: 22px;
+        max-width: 336px;
+    }
+}    
