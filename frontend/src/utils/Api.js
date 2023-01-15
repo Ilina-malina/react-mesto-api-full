@@ -77,6 +77,6 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: "https://api.moe-mesto.nomoredomains.club",
+  baseUrl: "http://localhost:3000",
 });
 

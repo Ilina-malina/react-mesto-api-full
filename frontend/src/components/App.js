@@ -40,6 +40,7 @@ function App() {
   const history = useHistory();
 
   useEffect(() => {
+    console.log('effec');
     if (isLoggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
         .then((values) => {
@@ -101,6 +102,7 @@ function App() {
       console.log("Invalid user");
       return;
     }
+    console.log(user);
     setUserData(user);
 
     setIsLoggedIn(true);
@@ -112,17 +114,20 @@ function App() {
   }, []);
 
   const login = async (email, password) => {
-    const data = await auth.login(email, password);
-    if (!data) {
-      console.log("Что-то пошло не так");
-    }
-    if (data) {
+    try {
+      const data = await auth.login(email, password);
       localStorage.setItem("jwt", data.token);
       setIsLoggedIn(true);
       setUserData({ email: email, password: password });
       history.push("/");
-    }
-  };
+     } catch {
+          setTooltipState({
+            isOpen: true,
+            title: "Что-то пошло не так! Попробуйте ещё раз.",
+            image: fail,
+          });
+      }
+  }; 
 
   const signOut = () => {
     localStorage.removeItem("jwt");
@@ -133,13 +138,13 @@ function App() {
   const register = useCallback(async (email, password) => {
     try {
       const data = await auth.register(email, password);
-      if (!data) {
-        setTooltipState({
-          isOpen: true,
-          title: "Что-то пошло не так! Попробуйте ещё раз.",
-          image: fail,
-        });
-      }
+      // if (!data) {
+      //   setTooltipState({
+      //     isOpen: true,
+      //     title: "Что-то пошло не так! Попробуйте ещё раз.",
+      //     image: fail,
+      //   });
+      // }
       if (data) {
         setIsLoggedIn(true);
         setUserData({

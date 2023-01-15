@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const mongoose = require('mongoose');
@@ -29,12 +28,12 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'public')));
+// const allowedCors = ['http://moe-mesto.nomoredomains.club', 'https://moe-mesto.nomoredomains.club', 'localhost:3000', 'http://localhost:3000'];
+// app.use(cors(allowedCors));
 
-const allowedCors = ['http://moe-mesto.nomoredomains.club', 'https://moe-mesto.nomoredomains.club', 'localhost:3000', 'http://localhost:3000'];
+app.use(cors());
 
-app.use(cors(allowedCors));
-
+app.use(requestLogger);
 app.use(limiter);
 
 app.use(helmet());
@@ -46,8 +45,6 @@ mongoose.connect('mongodb://127.0.0.1/mestodb', {
 
 app.use(cookieParser());
 app.use(bodyParser.json());
-
-app.use(requestLogger);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
@@ -68,9 +65,6 @@ app.post('/signup', celebrate({
 
 app.use('/users', auth, usersRouter);
 app.use('/cards', auth, cardsRouter);
-app.get('/signout', (req, res) => {
-  res.clearCookie('jwt').send({ message: 'Выход' });
-});
 
 app.use('*', (req, res, next) => {
   next(new AppError({ statusCode: 404, message: 'Страница не найдена' }));
